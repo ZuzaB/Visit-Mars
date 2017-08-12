@@ -1,5 +1,5 @@
 $(function(){
-    
+
     console.log('p');
     var nasaUrl = "https://api.nasa.gov/planetary/apod?api_key=6WpwqyBa7pKSUeUnrmYG6efhmGwNgyZQYhuU0Obr";
     var $top = $('.top');
@@ -7,12 +7,12 @@ $(function(){
     var $ul = $('ul');
     var $button = $('button');
     console.log($button);
-    
+
      function imageTop(image) {
         var $url = image.url;
         $top.css('background-image', 'url("'+ $url+ '")');
     }
-    
+
     $.ajax({
             url: nasaUrl+"&date="+RandomDate()
         }).done(function (response) {
@@ -21,9 +21,9 @@ $(function(){
         }).fail(function (error) {
             console.log(error);
         })//koniec ajax
-    
+
     function galeryImage(marsImages){
-        
+
         $.each(marsImages, function(indexImg, marsImg){
             console.log(marsImg.img_src);
             var $li = $('<li><img src="'+ marsImg.img_src +'">');
@@ -31,13 +31,13 @@ $(function(){
             return (indexImg !== 5);
         });
     }
-    
+
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-    
+
     function RandomDate(){
-        
+
         var $year = getRandomInt(2010, 2016);
         var $mouth = getRandomInt(1, 12);
         var $day = getRandomInt(1, 28);
@@ -54,7 +54,7 @@ $(function(){
         }).fail(function (error) {
             console.log(error);
         })//koniec ajax
-    
-//    $button.on('click', galeryImage(marsImages));//jak dodać tę funkcję
- 
+
+//    $button.on('click', galeryImage(marsImages));
+
 });
