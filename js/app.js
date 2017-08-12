@@ -26,7 +26,7 @@ $(function(){
 
         $.each(marsImages, function(indexImg, marsImg){
             console.log(marsImg.img_src);
-            var $li = $('<li><img src="'+ marsImg.img_src +'">');
+            var $li = $('<li><img src="'+ marsImg.img_src +'" class="img-fluid">');
             $ul.append($li);
             return (indexImg !== 5);
         });
