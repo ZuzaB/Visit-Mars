@@ -12,14 +12,15 @@ h1{
   font-size: 90px;
   color: wheat;
   font-weight: 900;
+  line-height: 600px;
 }
 
 .top{
     background-color: antiquewhite;
     text-align: center;
-    line-height: 600px;
-    background-image: contain;
+    background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;
 }
 
 .bottom{
