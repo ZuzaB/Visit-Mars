@@ -2,41 +2,20 @@ body{
       background-color: #0f1123;
       font-family: 'Audiowide', cursive;
 }
-section{
-    width: 100%;
-    height: 600px;
-    margin: 0 auto;
-
-}
 h1{
-  font-size: 90px;
+  font-size: 15vh;
   color: wheat;
   font-weight: 900;
-  line-height: 600px;
+  line-height: 100vh;
 }
-
 .top{
     background-color: antiquewhite;
     text-align: center;
     background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
+    margin-bottom: 15px;
 }
-
-.bottom{
-    width: 1200px;
-}
-
-ul{
-    list-style: none;
-    margin: 0;
-}
-
 img{
-    height: 100px;
-    width: 300px;
-}
-
-li{
-    display: inline;
+  padding: 15px 0;
 }

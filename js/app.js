@@ -3,8 +3,11 @@ $(function(){
     var nasaUrl = "https://api.nasa.gov/planetary/apod?api_key=6WpwqyBa7pKSUeUnrmYG6efhmGwNgyZQYhuU0Obr";
     var $top = $('.top');
     var nasaGaleryUrl ="https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2016-6-3&api_key=6WpwqyBa7pKSUeUnrmYG6efhmGwNgyZQYhuU0Obr";
-    var $ul = $('ul');
+    var $sectionBottom = $('.bottom')
+    var $divGallery = $sectionBottom.find('.image');
     var $button = $('button');
+
+    console.log($divGallery);
 
      function imageTop (image) {
         var $url = image.url;
@@ -22,8 +25,8 @@ $(function(){
     function galeryImage (marsImages) {
 
         $.each(marsImages, function(indexImg, marsImg){
-            var $li = $('<li><img src="'+ marsImg.img_src +'" class="img-fluid">');
-            $ul.append($li);
+            var $divImg = $('<div class="col-lg-4 col-sm-6 col-sx-12"><img src="'+ marsImg.img_src +'" class="img-responsive"></div>');
+            $divGallery.append($divImg);
             return (indexImg !== 5);
         });
     }
