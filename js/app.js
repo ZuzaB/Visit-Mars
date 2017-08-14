@@ -62,7 +62,6 @@ $(window).scroll( function () {
     }
 });
 
-  //    loadImage();
   //  $button.on('click', function (){//dodać button?
   //    numberImg += 3;
   //    loadImage();
