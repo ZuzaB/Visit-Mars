@@ -3,7 +3,7 @@ body{
       font-family: 'Audiowide', cursive;
 }
 h1{
-  font-size: 15vh;
+  font-size: 10vw;
   color: wheat;
   font-weight: 900;
   line-height: 100vh;
@@ -18,4 +18,5 @@ h1{
 }
 img{
   padding: 15px 0;
+  width: 100%;
 }
