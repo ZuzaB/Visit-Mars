@@ -1,70 +1,64 @@
-$(function(){
+$(function() {
 
-    var nasaUrl = "https://api.nasa.gov/planetary/apod?api_key=6WpwqyBa7pKSUeUnrmYG6efhmGwNgyZQYhuU0Obr";
-    var $top = $('.top');
-    var nasaGaleryUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2016-6-3&api_key=6WpwqyBa7pKSUeUnrmYG6efhmGwNgyZQYhuU0Obr";
-    var $sectionBottom = $('.bottom')
-    var $divGallery = $sectionBottom.find('.image');
-    var $button = $('button');
-    var numberImg = 0;
+  var nasaUrl = "https://api.nasa.gov/planetary/apod?api_key=6WpwqyBa7pKSUeUnrmYG6efhmGwNgyZQYhuU0Obr";
+  var $top = $('.top');
+  var nasaGaleryUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2016-6-3&api_key=6WpwqyBa7pKSUeUnrmYG6efhmGwNgyZQYhuU0Obr";
+  var $sectionBottom = $('.bottom')
+  var $divGallery = $sectionBottom.find('.image');
+  var $button = $('button');
+  var numberImg = 0;
 
-    console.log($divGallery);
+console.log(nasaGaleryUrl);
 
-     function imageTop (image) {
-        var $url = image.url;
-        $top.css('background-image', 'url("'+ $url+ '")');
-    }
+  function imageTop(image) {
+    var $url = image.url;
+    $top.css('background-image', 'url("' + $url + '")');
+  }
 
-    $.ajax({
-            url: nasaUrl + '&date=' + RandomDate()
-        }).done(function (response) {
-            imageTop(response);
-        }).fail(function (error) {
-            alert('Nie można pobrać danych z serwera.');
+  $.ajax({
+    url: nasaUrl + '&date=' + RandomDate()
+  }).done(function(response) {
+    imageTop(response);
+  }).fail(function(error) {
+    alert('Nie można pobrać danych z serwera.');
+  });
+
+  function galeryImage(marsImages) {
+
+    $.each(marsImages, function(indexImg, marsImg) {
+      var $divImg = $('<div class="col-lg-4 col-sm-6 col-sx-12"><img src="' + marsImg.img_src + '" class="img-responsive"></div>');
+      $divGallery.append($divImg);
     });
+  }
 
-    function galeryImage (marsImages) {
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
-        $.each(marsImages, function(indexImg, marsImg){
-              var $divImg = $('<div class="col-lg-4 col-sm-6 col-sx-12"><img src="'+ marsImg.img_src +'" class="img-responsive"></div>');
-              $divGallery.append($divImg);
-        });
-    }
+  function RandomDate() {
 
-    function getRandomInt (min, max) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+    var $year = getRandomInt(2010, 2016);
+    var $mouth = getRandomInt(1, 12);
+    var $day = getRandomInt(1, 28);
+    var $date = $year + '-' + $mouth + '-' + $day;
 
-    function RandomDate () {
+    return $date;
+  }
 
-        var $year = getRandomInt(2010, 2016);
-        var $mouth = getRandomInt(1, 12);
-        var $day = getRandomInt(1, 28);
-        var $date = $year + '-' + $mouth + '-' + $day;
-
-        return $date;
-    }
-
-$(window).scroll( function () {
+  $(window).scroll(function() {
     var scrollTop = $(document).scrollTop();
     var windowHeight = $(window).height();
     var bodyHeight = $(document).height() - windowHeight;
     var scrollPercentage = (scrollTop / bodyHeight);
 
-    if(scrollPercentage > 0.9) {
+    if (scrollPercentage > 0.9) {
       $.ajax({
-            url: nasaGaleryUrl
-        }).done(function (response) {
-                galeryImage(response.photos);
-        }).fail(function (error) {
-            alert('Nie można pobrać danych z serwera.');
+        url: nasaGaleryUrl
+      }).done(function(response) {
+        galeryImage(response.photos);
+      }).fail(function(error) {
+        alert('Nie można pobrać danych z serwera.');
       });
     }
-});
-
-  //  $button.on('click', function (){//dodać button?
-  //    numberImg += 3;
-  //    loadImage();
-  //  });
-
+  });
 });
