@@ -6,7 +6,7 @@ $(function() {
   var $sectionBottom = $('.bottom')
   var $divGallery = $sectionBottom.find('.image');
   var $button = $('button');
-  var numberImg = 0;
+  var x = 0;
 
   function imageTop(image) {
     var $url = image.url;
@@ -22,9 +22,8 @@ $(function() {
   });
 
   function galeryImage(marsImages) {
-
     $.each(marsImages, function(indexImg, marsImg) {
-      var $divImg = $('<div class="col-lg-4 col-sm-6 col-sx-12"><img src="' + marsImg.img_src + '" class="img-responsive"></div>');
+      var $divImg = $('<div class="col-lg-4 col-sm-6 col-sx-12 hidden"><img src="' + marsImg.img_src + '" class="img-responsive"></div>');
       $divGallery.append($divImg);
     });
   }
@@ -53,6 +52,14 @@ $(function() {
     });
   }
 
+function showImages(){
+  var $divMarsImages = $divGallery.children();
+  for (var i = x; i < x + 6; i++){
+    $divMarsImages.eq(i).removeClass('hidden');
+  }
+  x+=6;
+}
+
   $(window).scroll(function() {
     var scrollTop = $(document).scrollTop();
     var windowHeight = $(window).height();
@@ -60,7 +67,8 @@ $(function() {
     var scrollPercentage = (scrollTop / bodyHeight);
 
     if (scrollPercentage > 0.9) {
-      loadingMarsImg();
+      showImages(x);
     }
   });
+ loadingMarsImg();
 });
