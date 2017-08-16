@@ -6,7 +6,7 @@ $(function() {
   var $sectionBottom = $('.bottom')
   var $divGallery = $sectionBottom.find('.image');
   var $button = $('button');
-  var x = 0;
+  var counter = 0;
 
   function imageTop(image) {
     var $url = image.url;
@@ -54,10 +54,10 @@ $(function() {
 
 function showImages(){
   var $divMarsImages = $divGallery.children();
-  for (var i = x; i < x + 6; i++){
+  for (var i = counter; i < counter + 6; i++){
     $divMarsImages.eq(i).removeClass('hidden');
   }
-  x+=6;
+  counter+=6;
 }
 
   $(window).scroll(function() {
@@ -67,7 +67,7 @@ function showImages(){
     var scrollPercentage = (scrollTop / bodyHeight);
 
     if (scrollPercentage > 0.9) {
-      showImages(x);
+      showImages(counter);
     }
   });
  loadingMarsImg();
