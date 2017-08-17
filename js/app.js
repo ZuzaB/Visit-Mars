@@ -3,10 +3,11 @@ $(function() {
   var nasaUrl = 'https://api.nasa.gov/planetary/apod?api_key=6WpwqyBa7pKSUeUnrmYG6efhmGwNgyZQYhuU0Obr';
   var $top = $('.top');
   var nasaGaleryUrl = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2016-6-3&api_key=6WpwqyBa7pKSUeUnrmYG6efhmGwNgyZQYhuU0Obr';
-  var $sectionBottom = $('.bottom')
+  var $sectionBottom = $('#bottom')
   var $divGallery = $sectionBottom.find('.image');
   var $button = $('button');
   var counter = 0;
+  var $btnScroll = $('span');
 
   function imageTop(image) {
     var $url = image.url;
@@ -19,6 +20,12 @@ $(function() {
     imageTop(response);
   }).fail(function(error) {
     alert('Nie uzyskać połączenia z serwerem.');
+  });
+
+  $btnScroll.on('click', function(e) {
+    $('html, body').animate({
+      scrollTop: $("#bottom").offset().top
+    }, 1000);
   });
 
   function galeryImage(marsImages) {
@@ -52,13 +59,13 @@ $(function() {
     });
   }
 
-function showImages(){
-  var $divMarsImages = $divGallery.children();
-  for (var i = counter; i < counter + 6; i++){
-    $divMarsImages.eq(i).removeClass('hidden');
+  function showImages() {
+    var $divMarsImages = $divGallery.children();
+    for (var i = counter; i < counter + 6; i++) {
+      $divMarsImages.eq(i).removeClass('hidden');
+    }
+    counter += 6;
   }
-  counter+=6;
-}
 
   $(window).scroll(function() {
     var scrollTop = $(document).scrollTop();
@@ -70,5 +77,5 @@ function showImages(){
       showImages(counter);
     }
   });
- loadingMarsImg();
+  loadingMarsImg();
 });
