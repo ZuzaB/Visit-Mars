@@ -1,5 +1,5 @@
 # Visit-Mars
-Mars photogallery downloaded from the NASA API.
+Mars photo gallery downloaded from the NASA API.
 
 ## Used technologies: 
 
