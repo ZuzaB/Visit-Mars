@@ -1,7 +1,7 @@
 $(function() {
 
   var nasaUrl = 'https://api.nasa.gov/planetary/apod?api_key=6WpwqyBa7pKSUeUnrmYG6efhmGwNgyZQYhuU0Obr';
-  var $top = $('.top');
+  var $top = $('header');
   var nasaGaleryUrl = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2016-6-3&api_key=6WpwqyBa7pKSUeUnrmYG6efhmGwNgyZQYhuU0Obr';
   var $sectionBottom = $('#bottom')
   var $divGallery = $sectionBottom.find('.image');
@@ -19,7 +19,7 @@ $(function() {
   }).done(function(response) {
     imageTop(response);
   }).fail(function(error) {
-    alert('Nie uzyskać połączenia z serwerem.');
+    alert('Nie można uzyskać połączenia z serwerem.');
   });
 
   $btnScroll.on('click', function(e) {
@@ -55,7 +55,7 @@ $(function() {
     }).done(function(response) {
       galeryImage(response.photos);
     }).fail(function(error) {
-      alert('Nie uzyskać połączenia z serwerem.');
+      alert('Nie można uzyskać połączenia z serwerem.');
     });
   }
 
