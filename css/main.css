@@ -1,32 +1,41 @@
-body{
+body {
       background-color: #0f1123;
       font-family: 'Audiowide', cursive;
 }
-h1{
+h1 {
   font-size: 10vw;
-  color: wheat;
   font-weight: 900;
   line-height: 80vh;
+  color: wheat;
 }
-.top{
-    background-color: antiquewhite;
-    background-size: cover;
-    background-repeat: no-repeat;
+.top {
+    position: relative;
     height: 100vh;
     margin-bottom: 15px;
-    position: relative;
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-
-.top > a{
+.top > a {
   position: absolute;
   top: 85%;
   left: 50%;
 }
-span{
+span {
   color: wheat;
-  font-size: 4vw;
+  font-size: 6vw;
+  -webkit-animation: move 2s 1 ease;
+  -moz-animation: move 2s 1 ease;
+  -o-animation: move 2s 1 ease;
+  animation: move 2s 1 ease;
 }
-img{
+@keyframes move {
+  0%, 100% {
+    transform: translate(0, 0);}
+  50%{
+    transform: translate(0, -0.5em);}
+}
+img {
   padding: 15px 0;
   width: 100%;
   min-height: 400px;
