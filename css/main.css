@@ -25,18 +25,18 @@ span {
   color: wheat;
   font-size: 6vw;
   -webkit-animation: move 2s 1 ease;
-  -moz-animation: move 2s 1 ease;
-  -o-animation: move 2s 1 ease;
   animation: move 2s 1 ease;
-}
-@keyframes move {
-  0%, 100% {
-    transform: translate(0, 0);}
-  50%{
-    transform: translate(0, -0.5em);}
 }
 img {
   padding: 15px 0;
   width: 100%;
   min-height: 400px;
+}
+@-webkit-keyframes spin {
+  0%, 100% { -webkit-transform: translate(0, 0); }
+   { -webkit-transform: translate(0, -0.5em); }
+}
+@keyframes move {
+  0%, 100% { transform: translate(0, 0);}
+  50%{ transform: translate(0, -0.5em);}
 }
